@@ -646,10 +646,43 @@ canvas#mc{width:100%!important;}
       <h2 style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;text-align:center;margin-bottom:18px">Perguntas frequentes</h2>
       <div id="faqList"></div>
     </div>
-    <div style="background:linear-gradient(135deg,rgba(0,230,118,0.08),rgba(29,233,182,0.05));border:1px solid rgba(0,230,118,0.2);border-radius:18px;padding:36px;text-align:center">
-      <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--text);margin-bottom:9px">Pronto para assumir o controle?</h2>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:22px">Junte-se a mais de 12.000 brasileiros que já controlam suas finanças com o Nextfinance.</p>
-      <button onclick="switchTab('pageReg','tabReg')" style="background:var(--green);color:#000;border:none;border-radius:11px;padding:13px 38px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif">Cadastrar meu primeiro gasto →</button>
+    <!-- FORMULÁRIO DE CADASTRO DO VISITANTE -->
+    <div id="ctaFormBox" style="background:linear-gradient(135deg,rgba(0,230,118,0.08),rgba(29,233,182,0.04));border:1px solid rgba(0,230,118,0.25);border-radius:18px;padding:32px 28px;margin-bottom:20px">
+      <div style="text-align:center;margin-bottom:24px">
+        <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:8px">Acesso gratuito</div>
+        <h2 style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--text);margin-bottom:8px">Comece agora — é grátis</h2>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6">Crie sua conta e junte-se a mais de 12.000 brasileiros que já controlam suas finanças com o Nextfinance.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;max-width:480px;margin:0 auto">
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;" id="ctaBoxName">
+          <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">👤 Seu nome</div>
+          <input id="ctaName" type="text" placeholder="Ex: João Silva" style="width:100%;background:transparent;border:none;color:var(--text);font-size:15px;font-family:'Syne',sans-serif;font-weight:600;outline:none;" autocomplete="name" onfocus="document.getElementById('ctaBoxName').style.borderColor='var(--green)'" onblur="document.getElementById('ctaBoxName').style.borderColor='var(--border)'">
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;" id="ctaBoxEmail">
+          <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">📧 E-mail</div>
+          <input id="ctaEmail" type="email" placeholder="joao@email.com" style="width:100%;background:transparent;border:none;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" autocomplete="email" onfocus="document.getElementById('ctaBoxEmail').style.borderColor='var(--green)'" onblur="document.getElementById('ctaBoxEmail').style.borderColor='var(--border)'">
+        </div>
+        <div style="background:var(--s1);border:1px solid var(--border);border-radius:12px;padding:14px;" id="ctaBoxPhone">
+          <div style="font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px">📱 Telefone / WhatsApp</div>
+          <input id="ctaPhone" type="tel" placeholder="(11) 99999-9999" style="width:100%;background:transparent;border:none;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;" autocomplete="tel" onfocus="document.getElementById('ctaBoxPhone').style.borderColor='var(--green)'" onblur="document.getElementById('ctaBoxPhone').style.borderColor='var(--border)'">
+        </div>
+        <div id="ctaErr" style="display:none;background:rgba(255,23,68,0.1);border:1px solid rgba(255,23,68,0.3);border-radius:9px;padding:10px 14px;font-size:12.5px;color:#ff1744;font-weight:600"></div>
+        <button onclick="ctaSubmit()" id="ctaBtn" style="width:100%;background:var(--green);border:none;border-radius:12px;color:#000;font-size:15px;font-weight:700;padding:14px;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Criar minha conta grátis
+        </button>
+        <p style="text-align:center;font-size:11px;color:var(--dim)">🔒 Sem cartão &nbsp;·&nbsp; Cancele quando quiser &nbsp;·&nbsp; Dados protegidos</p>
+      </div>
+    </div>
+    <!-- SUCESSO PÓS-CADASTRO -->
+    <div id="ctaSuccess" style="display:none;background:linear-gradient(135deg,rgba(0,230,118,0.1),rgba(29,233,182,0.06));border:1px solid rgba(0,230,118,0.3);border-radius:18px;padding:36px;text-align:center;margin-bottom:20px">
+      <div style="font-size:52px;margin-bottom:16px">🎉</div>
+      <h2 style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--green);margin-bottom:8px">Cadastro realizado!</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:6px" id="ctaSuccessMsg"></p>
+      <p style="font-size:12px;color:var(--dim);margin-bottom:24px">Seu acesso foi liberado. Comece agora mesmo a controlar suas finanças.</p>
+      <button onclick="switchTab('pageReg','tabReg')" style="background:var(--green);color:#000;border:none;border-radius:11px;padding:13px 32px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;">
+        Ir para o painel →
+      </button>
     </div>
   </div>
   <div class="bb">
@@ -1020,6 +1053,49 @@ function toast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ══ CTA VISITOR REGISTRATION ══
+function ctaSubmit() {
+  const name  = document.getElementById('ctaName').value.trim();
+  const email = document.getElementById('ctaEmail').value.trim();
+  const phone = document.getElementById('ctaPhone').value.trim();
+  const errEl = document.getElementById('ctaErr');
+  const btn   = document.getElementById('ctaBtn');
+
+  // Validate
+  errEl.style.display = 'none';
+  if (!name) { showCtaErr('⚠️ Por favor, informe seu nome.'); return; }
+  if (!email && !phone) { showCtaErr('⚠️ Informe seu e-mail ou telefone para continuar.'); return; }
+  if (email && !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { showCtaErr('⚠️ E-mail inválido. Verifique e tente novamente.'); return; }
+
+  // Save as lead
+  const lead = { id: Date.now(), name, email, phone, note: 'Cadastro pela landing page', date: new Date().toISOString() };
+  leads.unshift(lead);
+  lsSaveLeads();
+
+  // Loading state
+  btn.textContent = '⏳ Cadastrando...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  // Simulate brief async (UX polish)
+  setTimeout(() => {
+    document.getElementById('ctaFormBox').style.display = 'none';
+    document.getElementById('ctaSuccess').style.display = 'block';
+    document.getElementById('ctaSuccessMsg').textContent = `Bem-vindo(a), ${name}! 👋 Conta criada com sucesso.`;
+    toast('✓ Cadastro realizado!');
+    btn.textContent = 'Criar minha conta grátis';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+  }, 1200);
+}
+
+function showCtaErr(msg) {
+  const el = document.getElementById('ctaErr');
+  el.textContent = msg;
+  el.style.display = 'block';
+  setTimeout(() => { el.style.display = 'none'; }, 4000);
 }
 
 // ══ INIT ══
